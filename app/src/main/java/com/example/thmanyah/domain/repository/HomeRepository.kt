@@ -5,6 +5,6 @@ import kotlinx.coroutines.flow.Flow
 
 interface HomeRepository {
 
-    suspend fun getHomeSections() : Flow<HomeSectionsDto>
+    fun getHomeSections(): Flow<HomeSectionsDto>
 
 }

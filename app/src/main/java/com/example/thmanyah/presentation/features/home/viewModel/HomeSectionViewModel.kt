@@ -8,35 +8,53 @@ import kotlinx.coroutines.flow.onEach
 import  javax.inject.Inject
 import androidx.compose.runtime.State
 import androidx.compose.runtime.mutableStateOf
+import androidx.lifecycle.viewModelScope
 import com.example.thmanyah.presentation.features.home.HomeSectionState
+import com.example.thmanyah.presentation.features.di.IoDispatcher
+import kotlinx.coroutines.CoroutineDispatcher
+import kotlinx.coroutines.flow.flowOn
+import kotlinx.coroutines.flow.launchIn
+import kotlinx.coroutines.flow.onErrorResume
+import kotlinx.coroutines.flow.onStart
+import kotlinx.coroutines.launch
 
 @HiltViewModel
 class HomeSectionViewModel
-@Inject constructor() :
+@Inject constructor(
+    val getHomeSectionsUseCase: GetHomeSectionsUseCase,
+    @IoDispatcher private val ioDispatcher: CoroutineDispatcher,
+) :
     ViewModel() {
     private val _homeSectionState = mutableStateOf(HomeSectionState())
     val homeSectionState: State<HomeSectionState> get() = _homeSectionState
 
     fun onEvent() {
-        getHomeSections()
+        getHomeSectionsUseCase()
+            .onStart {
+                _homeSectionState.value =
+                    homeSectionState.value.copy(
+                        data = "Started ..."
+                    )
+            }
+            .onEach {
+                _homeSectionState.value =
+                    homeSectionState.value.copy(
+                        data = it.sections
+                    )
+
+            }.catch {
+                _homeSectionState.value =
+                    homeSectionState.value.copy(
+                        data = it.message.orEmpty()
+                    )
+            }.flowOn(
+                ioDispatcher
+            ).launchIn(viewModelScope)
     }
 
 
     private fun getHomeSections() {
-        _homeSectionState.value = homeSectionState.value.copy(
-            data = "data data data"
-        )
-//        getHomeSectionsUseCase().onEach {
-//            _homeSectionState.value =
-//                homeSectionState.value.copy(
-//                    data = it.sections
-//                )
-//
-//        }.catch {
-//            _homeSectionState.value =
-//                homeSectionState.value.copy(
-//                    error = it.message.orEmpty()
-//                )
-//        }
+
+
     }
 }
