@@ -1,0 +1,6 @@
+package com.example.thmanyah.presentation.features
+
+sealed class HomeRoutes(val route: String, val title: String) {
+    data object Home : HomeRoutes("home", "Home")
+    data object Search : HomeRoutes("search", "Search")
+}

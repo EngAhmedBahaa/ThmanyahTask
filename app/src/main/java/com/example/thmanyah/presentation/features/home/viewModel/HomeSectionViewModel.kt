@@ -33,19 +33,21 @@ class HomeSectionViewModel
             .onStart {
                 _homeSectionState.value =
                     homeSectionState.value.copy(
-                        data = "Started ..."
+                        isLoading = true
                     )
             }
             .onEach {
                 _homeSectionState.value =
                     homeSectionState.value.copy(
-                        data = it.sections
+                        isLoading = false,
+                        data = it
                     )
 
             }.catch {
                 _homeSectionState.value =
                     homeSectionState.value.copy(
-                        data = it.message.orEmpty()
+                        isLoading = false,
+                        error = it.message.orEmpty()
                     )
             }.flowOn(
                 ioDispatcher
