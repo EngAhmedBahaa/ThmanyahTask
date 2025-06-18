@@ -5,6 +5,6 @@ import kotlinx.coroutines.flow.Flow
 
 interface HomeRepository {
 
-    fun getHomeSections(): Flow<HomeSectionsDto>
+    fun getHomeSections(pageNumber : Int): Flow<HomeSectionsDto>
 
 }

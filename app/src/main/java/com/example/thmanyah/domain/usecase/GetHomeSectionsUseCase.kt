@@ -11,8 +11,8 @@ import javax.inject.Inject
 class GetHomeSectionsUseCase @Inject constructor(
     private val repositoryImpl: HomeRepositoryImpl
 ) {
-      operator fun invoke(): Flow<HomeSectionsDto> {
-         return repositoryImpl.getHomeSections()
+      operator fun invoke(pageNumber : Int): Flow<HomeSectionsDto> {
+         return repositoryImpl.getHomeSections(pageNumber)
       }
 
 

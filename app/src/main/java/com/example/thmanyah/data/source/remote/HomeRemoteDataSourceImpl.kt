@@ -14,8 +14,8 @@ class HomeRemoteDataSourceImpl
     @Inject constructor(
      private val apiService: ApiService
     ): HomeRemoteDateSource {
-    override fun getHomeSections(): Flow<HomeSectionResponse> = flow {
-     emit(apiService.getHomeSections())
+    override fun getHomeSections(pageNumber : Int): Flow<HomeSectionResponse> = flow {
+     emit(apiService.getHomeSections(pageNumber))
     }
 
 }

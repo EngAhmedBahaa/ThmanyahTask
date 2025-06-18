@@ -13,8 +13,8 @@ class HomeRepositoryImpl @Inject constructor(
     private val homeSectionDataSource: HomeRemoteDataSourceImpl
 ) :
     HomeRepository {
-    override fun getHomeSections(): Flow<HomeSectionsDto> {
-       return homeSectionDataSource.getHomeSections().map {
+    override fun getHomeSections(pageNumber : Int): Flow<HomeSectionsDto> {
+       return homeSectionDataSource.getHomeSections(pageNumber).map {
             homeSectionRemoteMapper.map(it)
         }
     }

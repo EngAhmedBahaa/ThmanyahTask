@@ -1,4 +1,4 @@
-package com.example.thmanyah.presentation.features.home.ui.compoents.podcast
+package com.example.thmanyah.presentation.features.home.ui.compoents
 
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
@@ -13,16 +13,17 @@ import com.example.thmanyah.ui.theme.AppTheme
 import com.example.thmanyah.presentation.common.ImageLoader
 import androidx.compose.material3.Text
 import androidx.compose.ui.tooling.preview.Preview
-import com.example.thmanyah.presentation.extenstions.fromDoubleToHoursMinFormat
+import com.example.thmanyah.presentation.features.home.ui.model.ItemUiModel
 import com.example.thmanyah.ui.theme.white
 
 @Composable
-fun PodcastItem(modifier: Modifier = Modifier,
-                podcastItem : PodcastUiModel) {
+fun SquareItem(modifier: Modifier = Modifier,
+                podcastItem : ItemUiModel
+) {
     Column(
         modifier = modifier
             .width(AppTheme.spaces.space9Xl)
-            .padding(AppTheme.spaces.space2Xs)
+            .padding(horizontal = AppTheme.spaces.space2Xs)
     ) {
         ImageLoader(
             Modifier.size(AppTheme.spaces.space8Xl),
@@ -45,20 +46,25 @@ fun PodcastItem(modifier: Modifier = Modifier,
                 .height(AppTheme.spaces.space2Xs)
         )
         Text(
-            text = podcastItem.podcastDuration.fromDoubleToHoursMinFormat(),
+            text = podcastItem.subtitle,
             color = white,
             maxLines = 1
+        )
+        Spacer(
+            modifier = Modifier
+                .fillMaxWidth()
+                .height(AppTheme.spaces.space2Xs)
         )
     }
 }
 @Preview
 @Composable
 fun PodcastItemPreview() {
-    PodcastItem(
-        podcastItem = PodcastUiModel(
+    SquareItem(
+        podcastItem = ItemUiModel(
             imageUrl = "https://media.npr.org/assets/img/2022/09/23/up-first_tile_npr-network-01_sq-cd1dc7e35846274fc57247cfcb9cd4dddbb2d635.jpg?s=1400&c=66&f=jpg",
             title = "Up First from NPR",
-            podcastDuration = 474313.toDouble()
+            subtitle = "11:50"
         )
     )
 }

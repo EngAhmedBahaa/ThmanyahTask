@@ -1,27 +1,30 @@
-package com.example.thmanyah.presentation.features.home.ui
+package com.example.thmanyah.presentation.features.search
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
-import androidx.compose.runtime.Composable
-import androidx.compose.ui.Modifier
-import androidx.hilt.navigation.compose.hiltViewModel
-import com.example.thmanyah.presentation.features.home.viewModel.HomeSectionViewModel
-import com.example.thmanyah.ui.theme.AppTheme
-import com.example.thmanyah.ui.theme.Black
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.lazy.rememberLazyListState
+import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.ui.Modifier
+import androidx.hilt.navigation.compose.hiltViewModel
 import com.example.thmanyah.presentation.features.home.ui.compoents.BigSquareItems
 import com.example.thmanyah.presentation.features.home.ui.compoents.QueueSection
 import com.example.thmanyah.presentation.features.home.ui.compoents.SquarSection
 import com.example.thmanyah.presentation.features.home.ui.compoents.TwoLineGridsSection
 import com.example.thmanyah.presentation.features.home.ui.model.ItemType
+import com.example.thmanyah.presentation.features.home.viewModel.HomeSectionViewModel
+import com.example.thmanyah.ui.theme.AppTheme
+import com.example.thmanyah.ui.theme.Black
+
+class SearchScreen {
+}
 
 @Composable
-fun HomeSectionScreen(
+fun SearchScreen(
     modifier: Modifier = Modifier,
     viewModel: HomeSectionViewModel = hiltViewModel()
 ) {
