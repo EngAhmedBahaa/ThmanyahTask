@@ -9,8 +9,8 @@ data class Podcast(
     @SerializedName("episode_count") val episodeCount: Int? = null,
     @SerializedName("duration") val duration: Int? = null,
     @SerializedName("language") val language: String? = null,
-    @SerializedName("priority") val priority: Int? = null,
-    @SerializedName("popularityScore") val popularityScore: Int? = null,
-    @SerializedName("score") val score: Double? = null
+    @SerializedName("priority") val priority: String? = null,
+    @SerializedName("popularityScore") val popularityScore: String? = null,
+    @SerializedName("score") val score: String? = null
 
 ) : Content()

@@ -8,7 +8,7 @@ import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
-import com.example.thmanyah.presentation.features.home.ui.model.ItemUiModel
+import com.example.thmanyah.presentation.features.model.ItemUiModel
 import com.example.thmanyah.ui.theme.AppTheme
 import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.Text

@@ -18,4 +18,8 @@ class HomeRemoteDataSourceImpl
      emit(apiService.getHomeSections(pageNumber))
     }
 
+    override fun search(searchKey: String): Flow<HomeSectionResponse> = flow {
+        emit(apiService.search(searchKey))
+    }
+
 }

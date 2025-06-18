@@ -7,4 +7,6 @@ interface HomeRepository {
 
     fun getHomeSections(pageNumber : Int): Flow<HomeSectionsDto>
 
+    fun searchSections(searchKey : String): Flow<HomeSectionsDto>
+
 }

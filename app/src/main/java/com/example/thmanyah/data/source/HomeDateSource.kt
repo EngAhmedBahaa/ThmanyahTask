@@ -5,6 +5,7 @@ import kotlinx.coroutines.flow.Flow
 
 interface HomeRemoteDateSource {
     fun getHomeSections(pageNumber : Int): Flow<HomeSectionResponse>
+    fun search(searchKey : String): Flow<HomeSectionResponse>
 }
 
 /**

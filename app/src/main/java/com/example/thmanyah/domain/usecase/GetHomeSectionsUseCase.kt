@@ -15,5 +15,4 @@ class GetHomeSectionsUseCase @Inject constructor(
          return repositoryImpl.getHomeSections(pageNumber)
       }
 
-
 }

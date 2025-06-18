@@ -9,6 +9,7 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.composable
 import com.example.thmanyah.presentation.features.HomeRoutes
 import com.example.thmanyah.presentation.features.home.ui.HomeSectionScreen
+import com.example.thmanyah.presentation.features.search.SearchScreen
 
 @Composable
 fun NavigationHost(navController: NavHostController, innerPadding: PaddingValues) {
@@ -18,6 +19,6 @@ fun NavigationHost(navController: NavHostController, innerPadding: PaddingValues
         modifier = Modifier.padding(innerPadding)
     ) {
         composable(HomeRoutes.Home.route) { HomeSectionScreen(Modifier) }
-       // composable(Screen.Search.route) { SearchScreen(Modifier) }
+       composable(HomeRoutes.Search.route) { SearchScreen(Modifier) }
     }
 }

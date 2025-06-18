@@ -1,4 +1,4 @@
-package com.example.thmanyah.presentation.features.home.ui.model
+package com.example.thmanyah.presentation.features.model
 
 data class ItemUiModel(
     val imageUrl: String,

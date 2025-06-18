@@ -1,11 +1,11 @@
-package com.example.thmanyah.presentation.features.home.ui.mapper
+package com.example.thmanyah.presentation.features.mapper
 
 import com.example.thmanyah.domain.model.SectionContentDto
 import com.example.thmanyah.domain.model.SectionDto
 import com.example.thmanyah.presentation.extenstions.fromMinsToHoursMinFormat
-import com.example.thmanyah.presentation.features.home.ui.model.ItemType
-import com.example.thmanyah.presentation.features.home.ui.model.ItemUiModel
-import com.example.thmanyah.presentation.features.home.ui.model.SectionUiModel
+import com.example.thmanyah.presentation.features.model.ItemType
+import com.example.thmanyah.presentation.features.model.ItemUiModel
+import com.example.thmanyah.presentation.features.model.SectionUiModel
 import javax.inject.Inject
 
 class MapperSectionUiModel @Inject constructor() {
@@ -17,7 +17,7 @@ class MapperSectionUiModel @Inject constructor() {
                 mapContentToUiModel(it)
             } ?: emptyList(),
             order = section.order ?: 0,
-            type = ItemType.fromString(section.type.orEmpty())!!
+            type = ItemType.fromString(section.type.orEmpty()) ?: ItemType.Square
         )
 
     private fun mapContentToUiModel(content: SectionContentDto): ItemUiModel {

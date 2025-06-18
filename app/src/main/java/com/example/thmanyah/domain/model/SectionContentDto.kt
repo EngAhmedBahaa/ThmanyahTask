@@ -48,9 +48,9 @@ sealed class SectionContentDto {
         val episodeCount: Int? = null,
         val duration: Int? = null,
         val language: String? = null,
-        val priority: Int? = null,
-        val popularityScore: Int? = null,
-        val score: Double? = null
+        val priority: String? = null,
+        val popularityScore: String? = null,
+        val score: String? = null
 
     ) : SectionContentDto()
 }

@@ -6,7 +6,7 @@ data class Sections(
     @SerializedName("name") val name: String? = null,
     @SerializedName("type") val type: String? = null,
     @SerializedName("content_type") val contentType: String? = null,
-    @SerializedName("order") val order: Int? = null,
+    @SerializedName("order") val order: String? = null,
     @SerializedName("content") val content: List<Content>? = null
 
 )

@@ -9,4 +9,9 @@ interface ApiService {
     @GET("https://api-v2-b2sit6oh3a-uc.a.run.app/home_sections")
     suspend fun getHomeSections(@Query("page") page: Int): HomeSectionResponse
 
+
+    @GET("https://mock.apidog.com/m1/735111-711675-default/search")
+    suspend fun search(@Query("search") searchWord: String): HomeSectionResponse
+
+
 }

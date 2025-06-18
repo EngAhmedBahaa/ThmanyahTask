@@ -13,7 +13,7 @@ import com.example.thmanyah.ui.theme.AppTheme
 import com.example.thmanyah.presentation.common.ImageLoader
 import androidx.compose.material3.Text
 import androidx.compose.ui.tooling.preview.Preview
-import com.example.thmanyah.presentation.features.home.ui.model.ItemUiModel
+import com.example.thmanyah.presentation.features.model.ItemUiModel
 import com.example.thmanyah.ui.theme.white
 
 @Composable

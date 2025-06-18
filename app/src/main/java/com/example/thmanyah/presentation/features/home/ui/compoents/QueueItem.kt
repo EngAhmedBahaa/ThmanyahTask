@@ -15,7 +15,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.sp
 import com.example.thmanyah.presentation.common.ImageLoader
-import com.example.thmanyah.presentation.features.home.ui.model.ItemUiModel
+import com.example.thmanyah.presentation.features.model.ItemUiModel
 import com.example.thmanyah.ui.theme.AppTheme
 import com.example.thmanyah.ui.theme.LightGray
 import com.example.thmanyah.ui.theme.white

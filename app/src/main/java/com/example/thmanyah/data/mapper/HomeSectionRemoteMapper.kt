@@ -26,7 +26,7 @@ class HomeSectionRemoteMapper @Inject constructor() {
                 name = it.name,
                 type = it.type,
                 contentType = it.contentType,
-                order = it.order,
+                order = it.order?.toIntOrNull(),
                 content = mapContentTypes(it.content ?: emptyList())
             )
         }

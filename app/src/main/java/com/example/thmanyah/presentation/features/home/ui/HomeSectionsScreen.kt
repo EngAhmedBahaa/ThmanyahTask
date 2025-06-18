@@ -18,7 +18,7 @@ import com.example.thmanyah.presentation.features.home.ui.compoents.BigSquareIte
 import com.example.thmanyah.presentation.features.home.ui.compoents.QueueSection
 import com.example.thmanyah.presentation.features.home.ui.compoents.SquarSection
 import com.example.thmanyah.presentation.features.home.ui.compoents.TwoLineGridsSection
-import com.example.thmanyah.presentation.features.home.ui.model.ItemType
+import com.example.thmanyah.presentation.features.model.ItemType
 
 @Composable
 fun HomeSectionScreen(

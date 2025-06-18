@@ -11,11 +11,17 @@ import javax.inject.Inject
 class HomeRepositoryImpl @Inject constructor(
     private val homeSectionRemoteMapper: HomeSectionRemoteMapper,
     private val homeSectionDataSource: HomeRemoteDataSourceImpl
-) :
-    HomeRepository {
-    override fun getHomeSections(pageNumber : Int): Flow<HomeSectionsDto> {
-       return homeSectionDataSource.getHomeSections(pageNumber).map {
+) : HomeRepository {
+    override fun getHomeSections(pageNumber: Int): Flow<HomeSectionsDto> {
+        return homeSectionDataSource.getHomeSections(pageNumber).map {
             homeSectionRemoteMapper.map(it)
         }
     }
+
+    override fun searchSections(searchKey: String): Flow<HomeSectionsDto> {
+        return homeSectionDataSource.search(searchKey).map {
+            homeSectionRemoteMapper.map(it)
+        }
+    }
+
 }

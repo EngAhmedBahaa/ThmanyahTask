@@ -11,8 +11,8 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.viewModelScope
 import com.example.thmanyah.presentation.features.home.HomeSectionState
 import com.example.thmanyah.presentation.features.di.IoDispatcher
-import com.example.thmanyah.presentation.features.home.ui.mapper.MapperSectionUiModel
-import com.example.thmanyah.presentation.features.home.ui.model.SectionUiModel
+import com.example.thmanyah.presentation.features.mapper.MapperSectionUiModel
+import com.example.thmanyah.presentation.features.model.SectionUiModel
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.flow.flowOn
 import kotlinx.coroutines.flow.launchIn

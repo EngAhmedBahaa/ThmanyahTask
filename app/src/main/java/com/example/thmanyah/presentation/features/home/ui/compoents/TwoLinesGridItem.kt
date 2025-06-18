@@ -12,7 +12,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import com.example.thmanyah.presentation.common.ImageLoader
-import com.example.thmanyah.presentation.features.home.ui.model.ItemUiModel
+import com.example.thmanyah.presentation.features.model.ItemUiModel
 import com.example.thmanyah.ui.theme.AppTheme
 import com.example.thmanyah.ui.theme.white
 
