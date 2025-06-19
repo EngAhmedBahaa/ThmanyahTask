@@ -36,33 +36,33 @@ class HomeSectionViewModel
         val nextPageNumber = homeSectionState.value.currentPage + 1
         var isLastPageReached = false
         homeSectionState.value.totalPages?.let { totalPages ->
-            isLastPageReached = nextPageNumber >= totalPages
+            isLastPageReached = nextPageNumber > totalPages
         }
         if (isLastPageReached.not()) {
             getHomeSectionsUseCase(nextPageNumber)
                 .onStart {
                     _homeSectionState.value =
                         homeSectionState.value.copy(
-                            isLoading = true
+                            isInitiated = true,
+                            isShimmerEnabled = nextPageNumber == 1,
                         )
                 }
                 .onEach {
-                    val sections: ArrayList<SectionUiModel> = homeSectionState.value.data ?:
-                    ArrayList()
+                    val sections: ArrayList<SectionUiModel> =
+                        homeSectionState.value.data ?: ArrayList()
 
                     val listOfUiSection = it.sections?.map { section ->
                         mapperSectionUiModel.map(section)
                     }
-                     listOfUiSection?.let { it1 ->
+                    listOfUiSection?.let { it1 ->
                         sections.addAll(
                             it1
                         )
                     }
-                  //   sections.sortBy {it.order}
 
                     _homeSectionState.value =
                         homeSectionState.value.copy(
-                            isLoading = false,
+                            isShimmerEnabled = false,
                             data = sections,
                             totalPages = it.totalPages,
                             currentPage = nextPageNumber
@@ -71,7 +71,7 @@ class HomeSectionViewModel
                 }.catch {
                     _homeSectionState.value =
                         homeSectionState.value.copy(
-                            isLoading = false,
+                            isShimmerEnabled = false,
                             error = it.message.orEmpty()
                         )
                 }.flowOn(

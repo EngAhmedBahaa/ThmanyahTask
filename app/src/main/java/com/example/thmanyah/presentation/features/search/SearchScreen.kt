@@ -4,6 +4,7 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
@@ -19,9 +20,12 @@ import androidx.compose.runtime.derivedStateOf
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.input.TextFieldValue
 import androidx.hilt.navigation.compose.hiltViewModel
+import com.example.thmanyah.R
 import com.example.thmanyah.presentation.features.home.ui.compoents.BigSquareItems
+import com.example.thmanyah.presentation.features.home.ui.compoents.ErrorFullScreen
 import com.example.thmanyah.presentation.features.home.ui.compoents.QueueSection
 import com.example.thmanyah.presentation.features.home.ui.compoents.SquarSection
 import com.example.thmanyah.presentation.features.home.ui.compoents.TwoLineGridsSection
@@ -43,66 +47,77 @@ fun SearchScreen(
     val searchQuery = remember { mutableStateOf(TextFieldValue("")) }
 
 
-    Column(
-        modifier = modifier
-            .background(
-                color = Black
-            )
-            .padding(bottom = AppTheme.spaces.spaceL)
-    ) {
+            Column(
+                modifier = modifier
+                    .padding(bottom = AppTheme.spaces.spaceL)
+            ) {
 
-        TextField(
-            value = searchQuery.value,
-            onValueChange = {
-                searchQuery.value = it
-                viewModel.getSearchResult(it.text)
-            },
-            placeholder = { Text("Search...") },
-            modifier = Modifier.fillMaxWidth(),
-            colors = TextFieldDefaults.colors(
-                focusedTextColor = Black,
-                unfocusedTextColor = Black
-            )
-        )
-        Spacer(
-            modifier = Modifier
-                .fillMaxWidth()
-                .height(AppTheme.spaces.spaceL)
-        )
-
-
-        LazyColumn(
-            state = listState,
-            contentPadding = PaddingValues(
-                AppTheme.spaces.space2Xs
-            )
-        ) {
-
-            items(state.data ?: emptyList()) { item ->
-                when (item.type) {
-                    ItemType.Queue -> QueueSection(
-                        title = item.title,
-                        items = item.content
+                TextField(
+                    value = searchQuery.value,
+                    onValueChange = {
+                        searchQuery.value = it
+                        viewModel.getSearchResult(it.text)
+                    },
+                    placeholder = { Text("Search...") },
+                    modifier = Modifier.fillMaxWidth(),
+                    colors = TextFieldDefaults.colors(
+                        focusedTextColor = Black,
+                        unfocusedTextColor = Black
                     )
+                )
+                Spacer(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .height(AppTheme.spaces.spaceL)
+                )
 
-                    ItemType.Square -> SquarSection(
-                        title = item.title,
-                        items = item.content
-                    )
+                when {
+                    state.error.isEmpty().not() -> {
+                        ErrorFullScreen(
+                            modifier = Modifier.fillMaxSize(),
+                            retryAction = {
+                                viewModel.getSearchResult(searchQuery.value.text)
+                            },
+                            title = stringResource(R.string.error_title),
+                            message = state.error,
+                        )
+                    }
 
-                    ItemType.BigSquare -> BigSquareItems(
-                        title = item.title,
-                        items = item.content
-                    )
+                    else ->
+                        LazyColumn(
+                            state = listState,
+                            contentPadding = PaddingValues(
+                                AppTheme.spaces.space2Xs
+                            )
+                        ) {
 
-                    ItemType.TwoLinesGrid -> TwoLineGridsSection(
-                        title = item.title,
-                        items = item.content
-                    )
+                            items(state.data ?: emptyList()) { item ->
+                                when (item.type) {
+                                    ItemType.Queue -> QueueSection(
+                                        title = item.title,
+                                        items = item.content
+                                    )
+
+                                    ItemType.Square -> SquarSection(
+                                        title = item.title,
+                                        items = item.content
+                                    )
+
+                                    ItemType.BigSquare -> BigSquareItems(
+                                        title = item.title,
+                                        items = item.content
+                                    )
+
+                                    ItemType.TwoLinesGrid -> TwoLineGridsSection(
+                                        title = item.title,
+                                        items = item.content
+                                    )
+                                }
+
+                            }
+
+                        }
                 }
-
             }
 
-        }
-    }
 }

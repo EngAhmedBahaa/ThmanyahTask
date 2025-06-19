@@ -12,8 +12,10 @@ import androidx.compose.foundation.layout.size
 import com.example.thmanyah.ui.theme.AppTheme
 import com.example.thmanyah.presentation.common.ImageLoader
 import androidx.compose.material3.Text
+import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.tooling.preview.Preview
 import com.example.thmanyah.presentation.features.model.ItemUiModel
+import com.example.thmanyah.ui.theme.Black
 import com.example.thmanyah.ui.theme.white
 
 @Composable
@@ -37,8 +39,9 @@ fun SquareItem(modifier: Modifier = Modifier,
         Text(
             modifier = Modifier.fillMaxWidth(),
             text = podcastItem.title,
-            color = white,
-            maxLines = 2
+            color = Black,
+            maxLines = 1,
+            overflow = TextOverflow.Ellipsis
         )
         Spacer(
             modifier = Modifier
@@ -47,7 +50,7 @@ fun SquareItem(modifier: Modifier = Modifier,
         )
         Text(
             text = podcastItem.subtitle,
-            color = white,
+            color = Black,
             maxLines = 1
         )
         Spacer(

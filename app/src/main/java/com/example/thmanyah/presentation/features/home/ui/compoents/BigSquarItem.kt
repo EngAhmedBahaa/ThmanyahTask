@@ -15,6 +15,7 @@ import androidx.compose.ui.Modifier
 import com.example.thmanyah.presentation.common.ImageLoader
 import com.example.thmanyah.presentation.features.model.ItemUiModel
 import com.example.thmanyah.ui.theme.AppTheme
+import com.example.thmanyah.ui.theme.Black
 import com.example.thmanyah.ui.theme.Gray
 import com.example.thmanyah.ui.theme.white
 
@@ -45,7 +46,7 @@ fun BigSquareItem(
             ) {
                 Text(
                     text = item.title,
-                    color = white,
+                    color = Black,
                     maxLines = 2
                 )
                 Spacer(
@@ -56,7 +57,7 @@ fun BigSquareItem(
 
                 Text(
                     text = item.subtitle,
-                    color = white,
+                    color = Black,
                     maxLines = 1
                 )
                 Spacer(

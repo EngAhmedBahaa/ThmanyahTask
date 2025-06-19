@@ -14,6 +14,7 @@ import androidx.compose.foundation.lazy.items
 import androidx.compose.material3.Text
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.sp
+import com.example.thmanyah.ui.theme.Black
 import com.example.thmanyah.ui.theme.white
 
 @Composable
@@ -27,9 +28,11 @@ fun QueueSection(
         modifier = modifier.height(AppTheme.spaces.spaceHeightBig)
     ) {
         Text(
-            modifier=  Modifier.padding(bottom = AppTheme.spaces.spaceL),
+            modifier=  Modifier.padding(
+                start = AppTheme.spaces.spaceL,
+                bottom = AppTheme.spaces.spaceS),
             text = title,
-            color = white,
+            color = Black,
             fontSize = 18.sp,
             fontWeight = FontWeight.Bold,
             maxLines = 1

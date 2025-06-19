@@ -14,6 +14,7 @@ import androidx.compose.ui.Modifier
 import com.example.thmanyah.presentation.common.ImageLoader
 import com.example.thmanyah.presentation.features.model.ItemUiModel
 import com.example.thmanyah.ui.theme.AppTheme
+import com.example.thmanyah.ui.theme.Black
 import com.example.thmanyah.ui.theme.white
 
 @Composable
@@ -43,7 +44,7 @@ fun TwoLinesGridItem(
                     modifier = Modifier
                         .fillMaxWidth(),
                     text = item.title,
-                    color = white,
+                    color = Black,
                     maxLines = 2
                 )
                 Spacer(
@@ -54,7 +55,7 @@ fun TwoLinesGridItem(
 
                 Text(
                     text = item.subtitle,
-                    color = white,
+                    color = Black,
                     maxLines = 1
                 )
             }
